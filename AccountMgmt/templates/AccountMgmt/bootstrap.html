@@ -1,0 +1,93 @@
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block bootstrap3_title %}django-bootstrap3 template title{% endblock %}</title>
+    {% bootstrap_css %}
+    
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'AccountMgmt/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'AccountMgmt/css/bootstrap-theme.css' %}" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'AccountMgmt/css/customizedStype/index.css' %}" />
+    
+    <!-- Bootstrap core js-->
+    <script type="text/javascript" src="{% static 'AccountMgmt/js/bootstrap.js' %}"></script>
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% if 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
+    {% block bootstrap3_extra_head %}{% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid" >
+       <!--row 1 -->
+       <div class="row" id = "top_color_bar"></div>
+       <!--row 2 -->
+       <div class="row">
+          <div class="col-sm-6">
+            
+            <img src ="{% static 'AccountMgmt/image/logo.jpg' %}" class="pull-left">
+            
+          </div>
+          <div class="col-sm-6">
+             <div class="pull-right">
+                <h6>Log in as  <span class="label label-default">{{ currentUserInfo.userName }}</span></h6>
+                <h6>Company  <span class="label label-default">{{ currentUserInfo.companyName }}</span></h6>
+                <h6>Is Holding Company  <span id="server_status" class="label label-danger">{{currentUserInfo.is_holding_company}}</span></h6>
+                <h6>Office  <span class="label label-default">{{ currentUserInfo.officeName }}</span></h6>
+                <h6>Current Server  <span id="server_status" class="label label-danger">Development</span></h6>
+             </div>
+          </div>
+        
+       </div>
+       <!-- row 3 -->
+       <div id = "navigation_bar" class = "row">
+          
+          <ul class="col-md-12 nav nav-pills">
+             <li role = "presentation"><a href="#">Home</a></li>
+             <li role = "presentation"><a href="#">Log out</a></li>
+             <li role = "presentation"><a href="#">Contact us</a></li>
+          </ul>
+        
+       </div>
+       
+       <!--row 4-->
+       
+       <div class="row" id="greeting_icon_bar">
+          
+          <div class= "col-md-6 pull-left">
+            
+            <h2>Account Management</h2>
+            
+          </div>
+          
+          <div class= "col-md-6">
+             
+            <ul class="nav nav-pills pull-right" id="icon_list">
+                <li role="presentation"><button name = "add_loan"class="btn btn-success image-icon"> Add</br>Loan</button></li>
+                <li role="presentation"><button name = "policy_manager" class="btn btn-success image-icon">Policy<br>Manager</button></li>
+                <li role="presentation"><button name = "Report" class="btn btn-success image-icon">Report</button></li>
+            </ul>
+            
+          </div>
+        
+       </div>
+{% block bootstrap3_content %}django-bootstrap3 template content{% endblock %}
+{% if not 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
+{% block bootstrap3_extra_script %}{% endblock %}
+</body>
+
+</html>

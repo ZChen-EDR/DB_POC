@@ -1,0 +1,44 @@
+{% extends 'Core/base.html' %}
+{% load staticfiles %}
+
+
+
+
+{% block bootstrap3_content %}
+  <div class = "row">
+     <div class="col-md-2">
+        
+     </div>
+     <div class="col-md-3">
+        <h3>Choose an Existing Cabinet</h3>
+        
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              select a cabinet you want to create a loan within
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              
+              {% for cabinet in cabinet_list %}
+                  <li><a href="{{cabinet.cabinet_id}}">{{cabinet.cabinet_name}}</a></li>
+              {% endfor %}
+            </ul>
+       </div>
+        
+     </div>
+     <div class="col-md-2">
+        
+     </div>
+     <div class="col-md-3">
+        <h3>Create a New Cabinet</h3>
+        
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Cabinet Name">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Create</button>
+      </span>
+    </div>
+     </div>
+    
+  </div>
+{% endblock %}

@@ -1,0 +1,255 @@
+{% extends 'Core/base.html' %}
+{% load staticfiles %}
+
+
+
+
+{% block bootstrap3_content %}
+       <!--row 4-->
+       
+       <div class="row" id="greeting_icon_bar">
+          
+          <div class= "col-md-6 pull-left">
+            
+            <h2>Welcome to Collateral 360</h2>
+            
+          </div>
+          
+          <div class= "col-md-6">
+             
+            <ul class="nav nav-pills pull-right" id="icon_list">
+                <li role="presentation"><button onclick="window.location.href = 'cabinet'" name = "add_loan"class="btn btn-success image-icon"> Add</br>Loan</button></li>
+                <li role="presentation"><button name = "policy_manager" class="btn btn-success image-icon">Policy<br>Manager</button></li>
+                <li role="presentation"><button name = "Report" class="btn btn-success image-icon">Report</button></li>
+            </ul>
+            
+          </div>
+        
+       </div>
+       
+       <!-- row 5-->
+       
+       <div class="row" id="search_bar" style="margin-top:15px;">
+          <div class="col-md-5">
+             <div class="panel panel-default">
+                <div class="panel-heading">Cabinet</div>
+                <div class="panel-body" id = "cabinet_search_bar" style="width:inherit;">
+                    <div class="row" style="width:inherit;">
+                        <div class="col-sm-4" >
+                            <button type="button" class="btn btn-action" data-toggle="dropdown" aria-expanded="false">
+                                Select or Search for Cabinet..                                                                       .
+                                <span class="caret"></span>
+                            </button>
+                            
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                  <div class="input-group">
+                                  <span class="input-group-addon" id="basic-addon1">Search</span>
+                                  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-8">
+                            <button class="btn btn-action">Manage Cabinet</button> 
+                        </div>
+                        
+                    </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-md-4 pull-right">
+             <div class="panel panel-default">
+                <div class="panel-heading">Loan Information</div>
+                <div class="panel-body" id = "loan_information_bar" style="width:inherit;">
+                    <div style="width:inherit;">
+                            <button type="button" class="btn btn-action" data-toggle="dropdown" aria-expanded="false" >
+                                Select or Search for Cabinet..                                                                       .
+                                <span class="caret"></span>
+                            </button>
+                            
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                  <div class="input-group">
+                                  <span class="input-group-addon" id="basic-addon1">Search</span>
+                                  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                                <li><a href="#">c1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       
+       <!--row 6 -->
+       
+       
+       
+       <div class="row">
+        
+        <div class="col-sm-12 main">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active" ><a href="#Open" role="tab" data-toggle="tab">Open</a></li>
+                <li role="presentation"><a href="#profile" data-toggle="tab">Closed</a></li>
+                <li role="presentation" ><a href="#messages" data-toggle="tab">Upcomming Due Dates</a></li>
+                <li role="presentation" ><a href="#settings" data-toggle="tab">Open Bids</a></li>
+                <li role="presentation" ><a href="#" data-toggle="tab">Awarded Bids</a></li>
+                <li role="presentation"><a href="#">Accepted Bids</a></li>
+                <li role="presentation"><a href="#">Draft Service Requests</a></li>
+                
+                {% for tab in tabs %}
+                      <li role= "presentation" class={{tab.Class}}><a href="#">{{ tab.Name }}</a></li>
+                {% endfor %}
+                
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="Open"><p>Open</p></div>
+              <div role="tabpanel" class="tab-pane" id="profile"><p>profile</p></div>
+              <div role="tabpanel" class="tab-pane" id="messages"><p>messages</p></div>
+              <div role="tabpanel" class="tab-pane" id="settings"><p>settings</p></div>
+            </div>
+          
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+{% endblock %}
+

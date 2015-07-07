@@ -1,0 +1,84 @@
+//AS IS
+//right now the value and name of the parameter used to form a policy are added seperately
+//so user had to select potential values from all possible values first before they can select one in the policy
+//for example, there 8 possible values for "LoanType", user has to first select several values(3 let's say in this case) out of the 8, and pick one from the 3 when forming the final policy
+
+
+//Should be
+//let user add a parameter and pick the value out of all possible values.
+
+
+//when you delete a value, all rows in the matrix that has that value should be affected
+//should be relational
+//no way to change the value
+
+
+
+
+{"policy_parameters": //the parameters user selected from ALL of the parameters that are in their SRF
+                      {"loanAmount" : {
+                                       "type": "RANGE",//whether the parameter is a range or a single value in the policy
+                                       "Category" : "Loan", //use to mapping to the table contains the data, "Loan" Type goes to Loan table and "Location Type" goes to LenderLocations table, along with the locationID or LoanID
+                                       "Value": [{
+                                                  "upper_value": 12000,
+                                                  "lower_value": 10000},
+                                                 {
+                                                  "upper_value":25000,
+                                                  "lower_value":20000},
+                                               ]
+                                      },
+                       "loanType" : {
+                                     "type" : "DROP_DOWN",
+                                     "Category" : "Loan",
+                                     "Value" : ["Construction Loan",
+                                                "Government Lending",
+                                                "Purchase",
+                                                "Renew with New Money"] // this is the value that could be used in policy, not the intial list, the intial value list comes from the SRF form
+                                    }
+                      },
+                     
+ "policy" :
+            [
+                {
+                  "LoanAmount":{
+                               "Value":{
+                                        "upper_value":12000,
+                                        "lower_value":24000
+                                        },
+                               "Category":"Loan"
+                              },
+                 "LoanType" : {
+                               "Value" : "Purchase",
+                               "Category" : "Loan"
+                              },
+                   
+                 "Result" : [
+                             "Phase I Environmental Site Assessment",  
+                             "Loan Check Basic",
+                             "ASTM Transaction Screen"
+                            ]
+               },
+               {
+                 "LoanAmount":{
+                               "Value":{
+                                        "upper_value":45000,
+                                        "lower_value":79000
+                                        },
+                               "Category":"Loan"
+                              },
+                 "LoanType" : {
+                               "Value" : "Purchase",
+                               "Category" : "Loan"
+                              },
+                   
+                 "Result" : [
+                             "Phase I Environmental Site Assessment",  
+                             "Loan Check Basic",
+                             "ASTM Transaction Screen"
+                            ]  
+                   
+               }
+            ]
+    
+    
+}

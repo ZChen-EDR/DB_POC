@@ -1,0 +1,41 @@
+{% extends 'AccountMgmt/base.html' %}
+
+
+
+
+
+{% block bootstrap3_content %}
+    
+    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List content note</div>
+  <div class="panel-body">
+    <p>List of Companies {{ currentUserInfo.userName }} have access to</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+      <tr>
+        <td>Company Name</td>
+        <td>Action</td>
+      </tr>
+      
+        {% for company in companyListStandard %}
+           <tr> 
+            <td>
+                <li><a href="{{ company.companyID }}">{{ company.companyName }}</a></li>
+            </td>
+            <td>
+                <a href="{{company.companyID}}/edit">Edit</a>
+            </td>
+           </tr>
+        {% endfor %}
+      
+  </table>
+</div>
+
+
+
+
+{% endblock %}

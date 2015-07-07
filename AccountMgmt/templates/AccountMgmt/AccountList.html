@@ -1,0 +1,39 @@
+{% extends 'AccountMgmt/base.html' %}
+
+{% block bootstrap3_content %}
+    
+    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List content note</div>
+  <div class="panel-body">
+    <p>List of Accounts {{ currentUserInfo.userName }} have access to</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+      <tr>
+        <td>Account Name</td>
+        <td>Action</td>
+      </tr>
+      
+        {% for account in user_list_standard %}
+           <tr> 
+            <td>
+                <a href="{{ account.accountID }}">{{ account.name }}</a>
+            </td>
+            <td>
+                <a href="{{ account.accountID }}/edit">Edit</a>
+            </td>
+           </tr>
+        {% endfor %}
+      
+  </table>
+</div>
+
+
+
+
+{% endblock %}
+
+  

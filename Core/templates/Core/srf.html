@@ -1,0 +1,137 @@
+{% extends 'Core/base.html' %}
+{% load staticfiles %}
+
+
+
+
+{% block bootstrap3_content %}
+
+<div class="col-sm-12 main">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active" ><a href="#Transaction" role="tab" data-toggle="tab">Transaction</a></li>
+                <li role="presentation"><a href="#Collateral" data-toggle="tab">Collateral</a></li> 
+            </ul>
+            
+            <!-- Tab panes -->
+            
+            <form method="post">{% csrf_token %}
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Transaction">
+                        {% for column in column_set.Transaction %}
+                          <h3>{{column.Table.tableDisplay}}</h3>
+                        
+                          {% for field in column.Fields %}
+                            <div class = "form-group has-success" style="padding:5px;" >
+                                     {% if field.additionalText != "" %}
+                                        <h5>{{field.additionalText}}</h5>
+                                     {% endif %}
+                                     
+                                     {% if field.fieldType == "text"  %}
+                                        <div class="input-group">
+                                            <span class="input-group-addon">{{field.fieldDisplay}}</span>
+                                            <input name="{{field.fieldIdentity}}" type="{{field.fieldType}}"  max_length ="100" style="width:30%;" class="form-control" placeholder={{field.fieldDisplay}} aria-describedby="sizing-addon2">
+                                        </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "checkbox" %}
+                                       <div class="checkbox">
+                                        <label><input name="{{field.fieldIdentity}}" type="{{field.fieldType}}">{{field.fieldDisplay}}</label>
+                                       </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "dropdown" %}
+                                      <div class="input-group">
+                                        <span class="input-group-addon">{{field.fieldDisplay}}</span>
+                                        <select class="form-control" name="{{field.fieldIdentity}}"  style="width:30%;">
+                                            {% for item in field.list %}
+                                               <option value={{item.fieldIdentity}}>{{item.fieldDisplay}}</option>
+                                            {% endfor %}
+                                        </select>
+                                      </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "file"%}
+                                       <label class="control-label">{{field.fieldDisplay}}</label>
+                                       <div class="row bootstrap3-multi-input">
+                                        <div class="col-xs-12">
+                                          <input name="{{field.fieldIdentity}}" type="{{field.fieldType}}">
+                                        </div>
+                                       </div>
+                                     {% endif %}
+                                 
+                            </div>
+                          {% endfor %}
+                        {% endfor %}
+                        
+                        <button name="submit_button" class="btn btn-success" type="submit" value="create">Create Service Request</button>
+                        <button name="submit_button" class="btn btn-success" type="submit" value="saveDraft">Save As Draft</button>
+                        
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Collateral">
+                       {% for column in column_set.Collateral %}
+                          <h3>{{column.Table.tableDisplay}}</h3>
+                          <p>{{column.Table.additionalText}}</p>
+                        
+                          {% for field in column.Fields %}
+                            <div class = "form-group has-success" style="padding:5px;" >
+                                     {% if field.additionalText != "" %}
+                                        <h5>{{field.additionalText}}</h5>
+                                     {% endif %}
+                                     
+                                     {% if field.fieldType == "text"  %}
+                                        <div class="input-group">
+                                            <span class="input-group-addon">{{field.fieldDisplay}}</span>
+                                            <input name="{{field.fieldIdentity}}" type="{{field.fieldType}}"  max_length ="100" style="width:30%;" class="form-control" placeholder={{field.fieldDisplay}} aria-describedby="sizing-addon2">
+                                        </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "checkbox" %}
+                                       <div class="checkbox">
+                                        <label><input name="{{field.fieldIdentity}}" type="{{field.fieldType}}">{{field.fieldDisplay}}</label>
+                                       </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "dropdown" %}
+                                      <div class="input-group">
+                                        <span class="input-group-addon">{{field.fieldDisplay}}</span>
+                                        <select class="form-control" name="{{field.fieldIdentity}}" 
+                                        style="width:30%;">
+                                            {% for item in field.list %}
+                                               <option value={{item.fieldIdentity}}>{{item.fieldDisplay}}</option>
+                                            {% endfor %}
+                                        </select>
+                                      </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "file"%}
+                                       <label class="control-label">{{field.fieldDisplay}}</label>
+                                       <div class="row bootstrap3-multi-input">
+                                        <div class="col-xs-12">
+                                          <input name="{{field.fieldIdentity}}" type="{{field.fieldType}}">
+                                        </div>
+                                       </div>
+                                     {% endif %}
+                                     {% if field.fieldType == "multiple" %}
+                                       <h4>{{field.fieldDisplay}}</h4>
+                                       <select multiple="multiple" class="form-control" name={{field.fieldIdentity}} style="width: 50%;">
+                                          {% for item in field.list %}
+                                            <option value={{item.fieldIdentity}}>{{item.fieldDisplay}}</option>
+                                          {% endfor %}
+                                       </select>
+                                     {% endif %}
+                                     {% if field.fieldType == "longtext" %}
+                                       <h5>{{field.fieldDisplay}}</h5>
+                                       <textarea name="{{field.fieldIdentity}}" cols="60" rows="5" ></textarea>
+                                     {% endif %}
+                                 
+                            </div>
+                          {% endfor %}
+                        {% endfor %}
+                         
+                         <button name="submit_button" class="btn btn-success" type="submit" value="create">Create Service Request</button>
+                         
+                    
+                      </div>
+                    </div>
+                </div>
+                
+                
+            </form>
+            
+            
+ 
+{% endblock %}

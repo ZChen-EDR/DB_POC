@@ -1,0 +1,247 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+#top_color_bar {
+  
+  background-color: #32CD32;
+  height: 10px;
+  
+}
+
+#navigation_bar {
+  
+  background-color: #DCDCDC;
+  border:1px solid gray;
+  
+}
+
+#navigation_bar ul li .active {
+  
+  color:#5F9EA0;
+  
+}
+
+#greeting_icon_bar {
+  
+  border-bottom: 1px solid gray;
+  
+}
+
+
+#icon_list li{
+  
+ padding-top: 5px;
+  
+}
+
+.image-icon{
+  
+  height: 51px;
+  width: 51px;
+  font-size: xx-small;
+  text-align: center;
+  border: 1px solid black;
+  
+}
+
+/*index stylesheet*/
+html, body {
+  height: 100%;
+}
+
+.jumbotron.vertical-center {
+  margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh; /* You might also want to use
+                        'height' property instead.
+                        
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+  
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+  
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+  
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+  
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}
+
+#login_container {
+  background-color: #DCDCDC;
+  
+}
+
+
+/*server indicator bar*/
+
+.development_server{
+  
+  font-weight: bold;
+  color: white;
+  padding-left:10px;
+  text-align: left;
+  background-color: red;
+  
+  
+}
+
+
+.main_login_view, .login_input_area {
+  
+  border-left: 3px solid gray;
+  border-right:3px solid gray;
+}
+
+.main_login_view {
+  
+  border-top: 3px solid gray;
+  
+}
+
+.login_input_area{
+  
+  border-bottom: 3px solid gray;
+  
+}
+
+.input_area {
+  
+  margin-top : 20px;
+ 
+  
+}
+
+
+
+
+
+/*test sheet ends here*/
+
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+/*.navbar-fixed-top {
+  border: 0;
+}*/
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+/*.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    /*background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}*/
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}

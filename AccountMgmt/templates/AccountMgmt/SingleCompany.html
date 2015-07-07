@@ -1,0 +1,168 @@
+{% extends "AccountMgmt/base.html" %}
+{% load bootstrap3 %}
+
+
+
+
+{# Display a form #}
+{% block content %}
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List content note</div>
+  <div class="panel-body">
+    <p>Company Detailed Information</p>
+  </div>
+</div>
+
+
+<form  id ="profile_setup" method="post" class="form">
+    {% csrf_token %}
+    
+    <div class="row" style="border-top: 1px solid black;">
+        <div class="col-md-5" style="padding:25px;">
+            {% bootstrap_form form %}
+        </div>
+         
+        <div class="col-sm-5">
+             
+        </div>
+        
+    </div>
+    
+    
+    {% buttons %}
+        <button type="submit" class="btn btn-success">
+            {% bootstrap_icon "star" %} Submit
+        </button>
+    {% endbuttons %}
+    
+</form>
+
+
+<form id = "other_setup" method = "post" class="form" >
+  
+ 
+    <h3>1.Lender Vendors</h3>
+    
+      
+         <table class="table table-hover">
+            <thead>
+               <td>Company Name</td>
+               <td>Function</td>
+               <td>Contact</td>
+            </thead>
+            {% for company in preferredCompanyList %}
+               <tr>
+                 <td>{{ company.1 }}</td>
+                 <td>{{company.2}}</td>
+                 <td>{{company.3}} {{company.4}}</td>
+                 
+               </tr>
+            {% endfor %}
+           
+         </table>
+        
+     
+ 
+  
+  <!-- setup fee -->
+  
+
+    
+    
+      <h3>2.Lender Setup Fees</h3>
+      
+         <table class="table table-hover">
+            <thead>
+               <td>Setup Package</td>
+               <td>Price</td>
+               <td>Comments</td>
+               <td>Entered By</td>
+               <td>Invoice Date</td>
+               <td>Order ID</td>
+            </thead>
+            {% for setupfee in setupfees %}
+               <tr>
+                 <td>{{ setupfee.0 }}</td>
+                 <td>{{ setupfee.1 }}</td>
+                 <td>{{ setupfee.2 }}</td>
+                 <td>{{ setupfee.3}}/{{setupfee.4}} {{setupfee.5}}</td>
+                 <td>{{ setupfee.6 }}</td>
+                 <td>{{ setupfee.7 }}</td>
+               </tr>
+            {% endfor %}
+           
+         </table>
+        
+       <!-- lender service group & report-->
+       <h3>3.Lender Service and Template setup</h3>
+         {% for companyCategory in companyCategoryList %}
+            <h4>{{companyCategory.1}}</h4>
+            <table class="table table-hover">
+               <thead>
+                  <td>Show In Policy</td>
+                  <td>Report Type</td>
+                  <td>Template</td>
+                  <td>Fee</td>
+                  <td>Show In Procurement</td>
+                  <td>Vendors</td>
+               </thead>
+          
+            
+            {% for companyreportType in companyReportList %}
+              {% if companyreportType.6 == companyCategory.0 %}
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td>{{companyreportType.2}}</td>
+                  {% if companyreportType.3 == 0 or companyreportType == None %}
+                     <td>N/A</td>
+                  {% endif %}
+                  {% if companyreportType.3 == 1 %}
+                     <td>
+                      <select>
+                        <option>have template</option>
+                      </select>
+                     </td>
+                  {% else %}
+                     <td>N/A</td>
+                  {% endif %}
+                  {% if companyreportType.1 == "EnvScreen" or companyreportType.1 == "ERR"%}
+                     <td>Not Available</td>
+                  {% endif %}
+                  {% if companyreportType.1 != "EnvScreen" and companyreportType.1 != "ERR" %}
+                     <td>$<input type="text"></td>
+                  {% endif %}
+                  {% if companyreportType.4 == 1 %}
+                   <td><input type="checkbox" checked={{companyreportType.4}}></td>
+                  {% else %}
+                   <td><input type="checkbox"></td>
+                  {% endif %}
+                  {% if companyreportType.5 == 0 or companyreportType == None %}
+                   <td>N/A</td>
+                  {% endif %}
+                  {% if companyreportType.5 == 1 %}
+                    <td>
+                    <ul>
+                      <li>a vendor</li>
+                      <li>b vendor</li>
+                    </ul>
+                  </td>
+                  
+                {% endif %}
+              
+            </tr>
+           {% endif %}
+          {% endfor%}
+         </table>
+ 
+     {% endfor %}
+  
+  
+ 
+</form>
+
+
+
+
+
+{% endblock %}

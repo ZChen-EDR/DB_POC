@@ -1,0 +1,14 @@
+from django.conf.urls import url
+from . import views
+
+
+urlpatterns= [
+    
+    url(r'^$',views.index, name = 'index'),
+    url(r'^cabinet/$',views.cabinet, name = 'cabinet'),
+    url(r'^cabinet/(?P<cabinetID>[0-9]+)/$',views.srf, name = 'service request form'),
+    #url(r'^(?P<companyID>[0-9]+)/(?P<officeID>[0-9]+)/$', views.account_view, name = 'account view'),
+    #url(r'^(?P<companyID>[0-9]+)/(?P<officeID>[0-9]+)/edit',views.single_office_view, name = 'single office view'),
+    #url(r'^(?P<companyID>[0-9]+)/(?P<officeID>[0-9]+)/(?P<accountID>[0-9]+)/$', views.single_account_view, name = 'single account view')
+    
+]

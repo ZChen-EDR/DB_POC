@@ -1,0 +1,45 @@
+{% extends "AccountMgmt/base.html" %}
+{% load bootstrap3 %}
+
+
+
+
+{# Display a form #}
+{% block content %}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">List content note</div>
+  <div class="panel-body">
+    <p>Office Detailed Information</p>
+  </div>
+</div>
+<form  method="post" class="form">
+    {% csrf_token %}
+    
+    <div class="row" style="border-top: 1px solid black;">
+        <div class="col-md-5" style="padding:25px;">
+            {% bootstrap_form form %}
+        </div>
+         
+        <div class="col-sm-5">
+             
+        </div>
+        
+    </div>
+    
+    
+        {% buttons %}
+            <button type="submit" class="btn btn-success">
+                {% bootstrap_icon "star" %} Submit
+            </button>
+        {% endbuttons %}
+        
+       
+    
+    
+    
+    
+</form>
+
+{% endblock %}
